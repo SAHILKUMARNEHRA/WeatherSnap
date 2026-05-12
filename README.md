@@ -15,6 +15,15 @@ Created by Sahil Kumar.
 - Sync Gradle
 - Run the `app` configuration on an emulator/device
 
+## Run From ZIP
+
+- Download `deliverables/WeatherSnap_source.zip` from the repository
+- Extract the zip file
+- Open the extracted folder in Android Studio
+- Let Android Studio create/update `local.properties` automatically
+- Sync Gradle
+- Run the `app` configuration on an emulator/device
+
 ## Deliverables Checklist
 
 - Kotlin + Jetpack Compose UI
