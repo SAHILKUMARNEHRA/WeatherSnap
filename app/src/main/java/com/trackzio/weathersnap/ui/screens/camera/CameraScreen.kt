@@ -69,7 +69,8 @@ fun CameraScreen(
             CameraPreview(
                 modifier = Modifier.fillMaxSize(),
                 onCapture = { originalFile ->
-                    val compressedFile = File(context.cacheDir, "compressed_${UUID.randomUUID()}.jpg")
+                    val photosDir = File(context.filesDir, "photos").apply { mkdirs() }
+                    val compressedFile = File(photosDir, "compressed_${UUID.randomUUID()}.jpg")
                     val result = compressJpegToFile(
                         originalFile = originalFile,
                         outputFile = compressedFile,
@@ -233,7 +234,8 @@ private fun CameraPreview(
     LaunchedEffect(Unit) {
         CameraCaptureBus.captureRequests.collect {
             val capture = imageCapture ?: return@collect
-            val originalFile = File(context.cacheDir, "original_${UUID.randomUUID()}.jpg")
+            val photosDir = File(context.filesDir, "photos").apply { mkdirs() }
+            val originalFile = File(photosDir, "original_${UUID.randomUUID()}.jpg")
             val output = ImageCapture.OutputFileOptions.Builder(originalFile).build()
             capture.takePicture(
                 output,
